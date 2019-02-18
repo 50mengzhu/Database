@@ -507,11 +507,13 @@ $\Pi_A(R) = \{t[A] \mid t \in R\}$
 
 > $Sno \rightarrow Sdept\\Sdept\rightarrow Mname\\Sno,Cno \rightarrow Grade$
 
-![1550461734016](C:\Users\16700\AppData\Roaming\Typora\typora-user-images\1550461734016.png)
+![1550461734016](.\imgs\1550461734016.png)
+
+
 
 &emsp;&emsp;但是，这样的表会造成以下的后果——
 
-![1550462069574](C:\Users\16700\AppData\Roaming\Typora\typora-user-images\1550462069574.png)
+![1550462069574](.\imgs\1550462069574.png)
 
 &emsp;&emsp;看到这样的一张表，我们会发现存在以下的很多问题：
 
