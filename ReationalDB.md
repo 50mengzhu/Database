@@ -489,7 +489,7 @@ $\Pi_A(R) = \{t[A] \mid t \in R\}$
 
 &emsp;&emsp;【数据依赖】具体什么叫数据依赖呢？就是关系内部属性与属性之间的制约关系。主要包含以下两种依赖关系：**函数依赖**和**多值依赖**。
 
-###### 1.函数依赖
+###### <span id="fd">1.函数依赖</span>
 
 &emsp;&emsp;这种依赖关系类似于函数中的$y = f(x)$这样的关系，某些属性能够被其他的属性唯一决定。
 
@@ -499,7 +499,7 @@ $\Pi_A(R) = \{t[A] \mid t \in R\}$
 
 ##### （二）关系的规范化
 
-&emsp;&emsp;我们通过一个例子来研究数据表为什么需要规范化：
+&emsp;&emsp;<span id="example">我们通过一个例子来研究数据表为什么需要规范化：</span>
 
 > 建立一个学校教务系统的数据库，涉及到的对象包括学生的学号($Sno$)、所在系($Sdept$)、系主任姓名($Mname$)、课程号($Cno$)和成绩($Grade$)。
 
@@ -532,6 +532,20 @@ $\Pi_A(R) = \{t[A] \mid t \in R\}$
 【问题4】删除异常
 
 &emsp;&emsp;如果一个系的全部学生都毕业了，那么在清除数据库的时候会将这个系和系主任的信息全部丢掉。
+
+<br/>
+
+&emsp;&emsp;基于以上的我们对于数据库本身的设计模式存在的问题，那么我们需要在已经建立起的数据模型上开始进行数据库中数据表的规范化。
+
+&emsp;&emsp;接下来我们深入理解函数依赖：
+
+> 函数依赖的定义[见上文](#fd)，接下来我们来看具体的函数依赖关系
+>
+> 【定义一】设$R(U)$是属性集$U$上的关系模式，$X, Y$是$U$的子集。若对于$R(U)$的任意一个可能的关系$r$，$r$中不可能存在两个元组在$X$上的属性值相等，而在$Y$上的属性值不等，那么就称$X$函数确定$Y$或者$Y$函数依赖于$X$，记作$X\rightarrow Y$。<font color="red">也就是说，X中的属性一旦确定，Y的属性也被确定</font>
+>
+> 【定义二】在$R(U)$中，如果$X\rightarrow Y$，并且对于$X$的任何一个真子集$X^\prime$，都有$X^\prime \nrightarrow Y$，则称$Y$对$X$完全函数依赖，记$X\stackrel{F}{\rightarrow}Y$；若$X\rightarrow Y$，但$Y$不完全依赖于$X$，则称$Y$对$X$部分函数依赖，记作$X\stackrel{P}{\rightarrow}Y$。例如。[上例中](#example)的$(Sno, Cno) \stackrel{F}{\longrightarrow}Grade\quad (Sno, Cno)\stackrel{P}{\longrightarrow}Sdept$
+>
+> 【定义三】在$R(U)$中，如果$X\rightarrow Y(Y\nsubseteq X) $，$Y\nrightarrow X$，$Y\rightarrow Z$，$Z\nsubseteq Y$则称$Z$对$X$传递函数依赖，记为$X\stackrel{传递}{\rightarrow}Y$。例如，[上例中](#example)的$Sno\rightarrow Sdept\quad Sdept\rightarrow Mname$，所以$Sno\stackrel{传递}{\rightarrow}Mname$
 
 ######  1.第一范式（1NF）
 
